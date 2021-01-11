@@ -1,26 +1,24 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import Login from './component/login'
-import Logout from './component/logout'
-
-const AuthNav = () =>{
-  const { isAuthenticated, user } = useAuth0()
-  return (
-    <nav>
-      {isAuthenticated ? <Logout /> : <Login /> }
-    </nav>
-  );
-}
+import Theme from './styles/theme';
+import GlobalStyles from './styles/components'
+import { NavBar, Loader } from './components'
 
 function App() {
   const { isLoading } = useAuth0()
-  if(isLoading) {
-    return <div> Loading... </div>
-  }
+  
   return (
     <>
-      <AuthNav />
-      <h1>Jumga E-Commerce Store </h1>
+      <GlobalStyles />
+      <Theme>
+        {
+          isLoading ? <Loader /> :
+          <>
+          <NavBar />
+          <h1>Jumga E-Commerce Store </h1>
+          </>
+        }
+      </Theme>
     </>
   );
 }
