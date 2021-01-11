@@ -1,8 +1,9 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import Theme from './styles/theme';
-import GlobalStyles from './styles/components'
-import { NavBar, Loader } from './components'
+import GlobalStyles from './styles/components';
+import AppRoutes from './routes'
+import { Loading } from './components';
 
 function App() {
   const { isLoading } = useAuth0()
@@ -11,13 +12,7 @@ function App() {
     <>
       <GlobalStyles />
       <Theme>
-        {
-          isLoading ? <Loader /> :
-          <>
-          <NavBar />
-          <h1>Jumga E-Commerce Store </h1>
-          </>
-        }
+        { isLoading ? <Loading /> : <AppRoutes /> }
       </Theme>
     </>
   );

@@ -1,0 +1,5 @@
+export { default as Storefront } from './Storefront'
+export { default as Profile } from './Profile'
+export { default as MerchantsStore } from './MerchantsStore'
+export { default as JumgaAdmin } from './JumgaAdmin'
+export { default as NotFound } from './NotFound'

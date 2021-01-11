@@ -1,2 +1,2 @@
 export { default as NavBar } from './NavBar'
-export { default as Loader } from './utils/Loader'
+export { default as Loading } from './utils/Loading'
