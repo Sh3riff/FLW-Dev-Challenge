@@ -3,9 +3,9 @@ import { ThemeProvider } from 'styled-components';
 
 const theme ={
     color:{
-        primary: 'pink',
-        secondary: 'purple',
-        light: 'white',
+        primary: '#C8A2C8',
+        secondary: '#800080',
+        light: '#FFFFFF',
     }
 };
 

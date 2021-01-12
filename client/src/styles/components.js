@@ -10,3 +10,11 @@ export default createGlobalStyle`
     text-decoration: none;
     }    
 `;
+
+export const PageTemplate = styled.div`
+    background-color: ${props => props.theme.color.primary};
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+`;
