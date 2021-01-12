@@ -4,8 +4,8 @@ export const NavMain = styled.nav`
     background-color: ${props => props.theme.color.secondary};
     color: ${props => props.theme.color.light};
     height: 70px;
-    padding: 20px 50px;
-    font-size: 20px;
+    padding: 20px 2vw;
+    font-size: 1em;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -21,7 +21,7 @@ export const NavRight = styled.div`
     justify-content: center;
     align-items: center;
     p{
-        padding: 0 20px;
+        /* padding: 0 20px; */
     }
 `;
 
@@ -50,7 +50,7 @@ export const NavRightContainerTop = styled.div`
     align-items: center;
     cursor: pointer;
     svg{
-        margin: 0 10px;
+        margin: 0 5px;
     }
     p{
         padding: 0;
