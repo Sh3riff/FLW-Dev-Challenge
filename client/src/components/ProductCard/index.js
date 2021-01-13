@@ -3,7 +3,7 @@ import { Card } from './ProductCardStyle'
 
 const ProductCard = ({productInfo }) => {
 
-    const { productName, url, price, isInCart, productId } = productInfo;
+    const { productName, url, price, isInCart } = productInfo;
 
     return (
         <Card>

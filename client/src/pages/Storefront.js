@@ -1,14 +1,6 @@
 import React from 'react';
 import { ProductCard } from '../components';
-import { PageTemplate } from '../styles/components';
-import styled from 'styled-components';
-
-const StoreBox = styled.div`
-    width: min(100%, 1020px);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-`;
+import { PageTemplate, FlexyBox } from '../styles/components';
 
 const productInfo = {
     productName: "Iphone",
@@ -21,14 +13,14 @@ const productInfo = {
 const Storefront = () => {
     return (
         <PageTemplate>
-            <StoreBox>
+            <FlexyBox >
                 <ProductCard productInfo ={ productInfo }/>
                 <ProductCard productInfo ={ productInfo }/>
                 <ProductCard productInfo ={ productInfo }/>
                 <ProductCard productInfo ={ productInfo }/>
                 <ProductCard productInfo ={ productInfo }/>
                 <ProductCard productInfo ={ productInfo }/>
-           </StoreBox>
+           </FlexyBox>
         </PageTemplate>
     )
 }

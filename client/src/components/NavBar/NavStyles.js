@@ -12,6 +12,13 @@ export const NavMain = styled.nav`
     align-items: center;
 `;
 
+export const HomeLink = styled.h2`
+    cursor: pointer;
+    a{
+        color: ${props => props.theme.color.light};
+    }
+`;
+
 export const NavLeft = styled.div`
     cursor: pointer;
 `;
@@ -36,6 +43,9 @@ export const NavRightContainer = styled.div`
         li{
             cursor: pointer;
             margin: 5px 0;
+            a{
+                color: ${props => props.theme.color.light};
+            }
         }
     }
 `;

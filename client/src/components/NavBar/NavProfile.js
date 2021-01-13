@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from "react-router-dom";
 import { FaUserAlt, FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { NavRightContainer, NavRightContainer2, NavRightContainerTop } from "./NavStyles"
 
@@ -22,8 +23,9 @@ const NavProfile = () => {
                 <ul>
                     { isAuthenticated ?
                         <ul>
-                            <li>Profile</li>
-                            <li>My store</li>
+                            <li><Link to={"./profile"}>Profile</Link></li>
+                            <li><Link to={"./orders"}>Orders</Link></li>
+                            <li><Link to={"./mystore"}>My store</Link></li>
                             <li  onClick={ () => logout() } >logout</li>
                         </ul>
                         :
