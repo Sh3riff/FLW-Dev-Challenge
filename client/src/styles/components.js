@@ -12,6 +12,10 @@ export default createGlobalStyle`
     }    
 `;
 
+export const ErrMsg = styled.span`
+    color: red;
+`
+
 export const PageTemplate = styled.div`
     background-color: ${props => props.theme.color.primary};
     min-height: 100vh;
@@ -64,6 +68,7 @@ export const Button =styled.button`
     margin: ${props => props.margin || "5px"};
 `;
 export const FormContainer = styled.form`
+    position: relative;
     width: 100%;
     max-width: 500px;
     padding: 10px 20px;
@@ -75,6 +80,7 @@ export const FormContainer = styled.form`
     background-clip: padding-box;
     backdrop-filter: blur(10px );
     border: 2.5px solid ${props => props.theme.color.secondary};
+
     legend {
         font-size: 1.4em;
         margin-bottom: 10px;
@@ -94,7 +100,7 @@ export const FormContainer = styled.form`
     }
     label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 20px;
     }
     input, textarea, select{
         background: rgba(255, 255, 255, .1);
@@ -112,7 +118,6 @@ export const FormContainer = styled.form`
         color: ${props => props.theme.color.secondary};
         -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
         box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-        margin-bottom: 30px;
         :focus {
             background-color: ${props => props.theme.color.grey};
         }
