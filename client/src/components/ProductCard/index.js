@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { CartContext } from '../../contexts';
 import { Card } from './ProductCardStyle'
 
-const ProductCard = ({productInfo }) => {
+const ProductCard = ({ product }) => {
 
-    const { productName, url, price, isInCart } = productInfo;
+    const { addProduct, cartItems, increase } = useContext(CartContext);
+    const { name, id, photo, price } = product;
+
+    const isInCart = id => {
+        return !!cartItems.find(item => item.id === id);
+    }
 
     return (
         <Card>
-            <img src={url} alt={productName}/>
-
+            <img src={photo} alt={name}/>
             <div>
                 <div className="basic-info">
-                    <p>{productName}</p>
-                    <p>{price}</p>
+                    <p>{name}</p>
+                    <p>${price}</p>
                 </div>
-                {!isInCart ?
-                    <button>ADD TO CART </button>
-                :
-                    <button>ADD MORE </button>
+                {
+                    isInCart(id) ?
+                    <button onClick={() => increase(product)}>ADD MORE</button> :
+                    <button onClick={() => addProduct(product)}>ADD TO CART</button>
                 }
             </div>
         </Card>

@@ -10,7 +10,7 @@ import { TableContainer } from './TableStyle';
 //     delWith: "func",  // function to delete
 // }
 
-export const Table = ({ tableHeader, tableData, config }) => {
+const Table = ({ tableHeader, tableData, config }) => {
     const { uniqueId, isImage, editWith, delWith } = config;
     return (
         <TableContainer>
@@ -46,3 +46,5 @@ export const Table = ({ tableHeader, tableData, config }) => {
             </TableContainer>
     )
 }
+
+export default Table

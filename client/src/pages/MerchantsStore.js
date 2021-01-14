@@ -8,7 +8,7 @@ const userAsStore = true;
 
 
 const MerchantsStore = () => {
-    const [ productView, SetProductView ] = useState(true)
+    const [ productView, SetProductView ] = useState(false)
     const [ addProduct, SetAddProduct ] = useState(false)
 
     const editFunc = val => console.log(val)

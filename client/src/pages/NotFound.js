@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { PageTemplate } from '../styles/components';
 
 const NotFound = () => {
     return (
-        <div>
+        <PageTemplate>
             <h1>Page Not Found </h1>
-        </div>
+        </PageTemplate>
     )
 }
 

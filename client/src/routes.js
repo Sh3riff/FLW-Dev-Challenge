@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withAuthenticationRequired } from '@auth0/auth0-react' 
 import { NavBar, Loading } from './components'
-import { Storefront, Profile, OrderHistory, MerchantsStore, JumgaAdmin, NotFound } from "./pages"
+import { Storefront, Profile, OrderHistory, MerchantsStore, Cart, JumgaAdmin, NotFound } from "./pages"
 
 const PrivateRoute = ({ component, ...args }) => (
     <Route
@@ -24,6 +24,7 @@ const AppRoutes = props => {
           <PrivateRoute exact path='/profile' component={Profile}/>
           <PrivateRoute exact path='/orders' component={OrderHistory}/>
           <PrivateRoute exact path='/mystore' component={MerchantsStore}/>
+          <PrivateRoute exact path='/cart' component={Cart}/>
           <PrivateRoute exact path='/jumgaadmin' component={JumgaAdmin}/>
           <Route component={NotFound} />
         </Switch>

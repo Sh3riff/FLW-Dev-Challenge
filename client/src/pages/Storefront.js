@@ -2,24 +2,38 @@ import React from 'react';
 import { ProductCard } from '../components';
 import { PageTemplate, FlexyBox } from '../styles/components';
 
-const productInfo = {
-    productName: "Iphone",
-    url: 'https://i.picsum.photos/id/806/536/354.jpg?hmac=cuS-BpiPqGiZFIRLcL_mn2r40jiBkagQRjOmo485OyM',
-    price: "$24",
-    isInCart: 0,
-    productId: "qwedsfr",
-}
+const photo = 'https://i.picsum.photos/id/806/536/354.jpg?hmac=cuS-BpiPqGiZFIRLcL_mn2r40jiBkagQRjOmo485OyM'
+
+const products = [
+    {
+        id: "qwedsfr",
+        name: "Iphone",
+        photo,
+        price: 24,
+    },
+    {
+        id: "qwedsft",
+        name: "Samsung",
+        photo,
+        price: 20,
+    },
+    {
+        id: "qweusfr",
+        name: "Sony",
+        photo,
+        price: 21,
+    },
+]
 
 const Storefront = () => {
     return (
         <PageTemplate>
             <FlexyBox >
-                <ProductCard productInfo ={ productInfo }/>
-                <ProductCard productInfo ={ productInfo }/>
-                <ProductCard productInfo ={ productInfo }/>
-                <ProductCard productInfo ={ productInfo }/>
-                <ProductCard productInfo ={ productInfo }/>
-                <ProductCard productInfo ={ productInfo }/>
+                {
+                    products.map(product => (
+                        <ProductCard key={product.id} product={product}/>
+                    ))
+                }
            </FlexyBox>
         </PageTemplate>
     )

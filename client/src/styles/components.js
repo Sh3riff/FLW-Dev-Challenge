@@ -28,7 +28,7 @@ export const FlexyBox = styled.div`
     grid-gap: 20px;
 `;
 
-export const InfoCard = styled.div`
+export const InfoCardSlim = styled.div`
     width: min(400px, 80vw);
     height: fit-content;
     padding: 20px;
@@ -38,6 +38,9 @@ export const InfoCard = styled.div`
     background-clip: padding-box;
     backdrop-filter: blur(10px );
     border: 2.5px solid ${props => props.theme.color.secondary};
+`;
+
+export const InfoCard = styled(InfoCardSlim)`
     h2,p{
         color: ${props => props.theme.color.secondary};
         padding: 0 0 25px;
