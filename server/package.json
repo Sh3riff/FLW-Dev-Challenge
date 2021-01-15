@@ -1,0 +1,29 @@
+{
+  "name": "jumga-server",
+  "version": "1.0.0",
+  "description": "Node-Express server for Jumga E-Commerce (Flutterwave Challenge)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sh3riff/FLW-Dev-Challenge.git"
+  },
+  "author": "Olowolagba Sheriff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sh3riff/FLW-Dev-Challenge/issues"
+  },
+  "homepage": "https://github.com/Sh3riff/FLW-Dev-Challenge#readme",
+  "dependencies": {
+    "@mongoosejs/double": "^0.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jwks-rsa": "^1.12.2",
+    "mongoose": "^5.11.11"
+  }
+}
