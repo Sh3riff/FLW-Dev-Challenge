@@ -1,0 +1,27 @@
+GET http://localhost:8080/
+Content-Type: application/json
+whoIs: sh3riff101@gmail.com
+###
+GET http://localhost:8080/products/getAll
+Content-Type: application/json
+whoIs: sh3riff101@gmail.com
+###
+POST http://localhost:8080/products/add
+Content-Type: application/json
+whois: "sh3riff101@gmail.com"
+
+{
+    "id" : "002",
+    "name": "MacBook let",
+    "photo": "https://s3card.s3.amazonaws.com/ast/FLW/macbookPro.jpg",
+    "price": 3900,
+    "qty": 15
+}
+###
+DELETE http://localhost:8080/products/delete
+Content-Type: application/json
+whois: "sh3riff101@gmail.com"
+
+{
+    "id" : "Jumga-002"
+}

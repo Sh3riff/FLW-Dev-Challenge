@@ -1,0 +1,31 @@
+GET http://localhost:8080/users/getAll
+Content-Type: application/json
+whoIs: sh3riff101@gmail.com
+###
+POST http://localhost:8080/users/add
+Content-Type: application/json
+whois: sh3riff101@gmail.com
+
+{
+    "email" : "pure@test.com"
+}
+###
+PUT http://localhost:8080/users/update
+Content-Type: application/json
+whois: pure@test.com
+
+{
+    "firstName": "Pure",
+    "lastName": "Man",
+    "country": "Nigeria",
+    "address": "Abuja",
+    "isMerchant": true,
+    "email": "pure@test.com",
+    "storeId": "rt945",
+    "storeName": "Evergreen Store",
+    "dispatchRider": "Mr X",
+    "dispatchRiderContact": "08145686467"
+}
+###
+DELETE  http://localhost:8080/users/deleteall
+Content-Type: application/json
