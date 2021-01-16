@@ -2,9 +2,9 @@ GET http://localhost:8080/
 Content-Type: application/json
 whoIs: sh3riff101@gmail.com
 ###
-GET https://jumga-backend.herokuapp.com/products/getAll
+GET http://localhost:8080/products/getAll
 Content-Type: application/json
-whoIs: sh3riff101@gmail.com
+# whoIs: sh3riff101@gmail.com
 ###
 POST http://localhost:8080/products/add
 Content-Type: application/json
