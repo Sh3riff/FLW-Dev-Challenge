@@ -7,7 +7,7 @@ import { PageTemplate, FlexyBox } from '../styles/components';
 
 const Storefront = () => {
     const { user } = useAuth0()
-    const { isLoading, error, data } = useQuery('storeFront', () =>ApiGet("products/getAll", user.email))
+    const { isLoading, error, data } = useQuery('storeFront', () =>ApiGet("products/getAll"))
     if(isLoading) return( <Loading />)
     if(error) return( <Error />)
     return (

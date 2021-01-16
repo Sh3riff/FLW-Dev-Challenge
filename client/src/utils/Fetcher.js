@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseurl = "https://jumga-backend.herokuapp.com"
-export const ApiGet = async (url, id) => {
+const baseUrl = "https://jumga-backend.herokuapp.com"
+export const ApiGet = async (url, id=0) => {
      const whois = id || null
     return new Promise((resolve, reject) => {
-        axios.get(`${baseurl}/${url}`, {
+        axios.get(`${baseUrl}/${url}`, {
             headers: {whois}
         })
             .then(response => {
@@ -16,9 +16,9 @@ export const ApiGet = async (url, id) => {
     })
 };
 
-// export const ApiPlus = (url, method, whois, body) => {
+export const ApiPlus = (url, method, whois, body) => {
     
 
-//     axios[method](`${baseUrl}/${url}`)
+    axios[method](`${baseUrl}/${url}`)
 
-// }
+}
