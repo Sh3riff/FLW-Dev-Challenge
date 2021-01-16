@@ -1,36 +1,20 @@
 import React from 'react';
-import { ProductCard } from '../components';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery } from 'react-query';
+import { ApiGet } from '../utils'
+import { ProductCard, Loading, Error } from '../components';
 import { PageTemplate, FlexyBox } from '../styles/components';
 
-const photo = 'https://i.picsum.photos/id/806/536/354.jpg?hmac=cuS-BpiPqGiZFIRLcL_mn2r40jiBkagQRjOmo485OyM'
-
-const products = [
-    {
-        id: "qwedsfr",
-        name: "Iphone",
-        photo,
-        price: 24,
-    },
-    {
-        id: "qwedsft",
-        name: "Samsung",
-        photo,
-        price: 20,
-    },
-    {
-        id: "qweusfr",
-        name: "Sony",
-        photo,
-        price: 21,
-    },
-]
-
 const Storefront = () => {
+    const { user } = useAuth0()
+    const { isLoading, error, data } = useQuery('storeFront', () =>ApiGet("products/getAll", user.email))
+    if(isLoading) return( <Loading />)
+    if(error) return( <Error />)
     return (
         <PageTemplate>
             <FlexyBox >
                 {
-                    products.map(product => (
+                    data.map(product => (
                         <ProductCard key={product.id} product={product}/>
                     ))
                 }

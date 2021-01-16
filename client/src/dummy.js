@@ -1,4 +1,7 @@
-export const user = "ade"
+// const baseurl = "https://jumga-backend.herokuapp.com"
+
+// const baseurl = "http://localhost:8080"
+
 
 export const url = 'https://i.picsum.photos/id/806/536/354.jpg?hmac=cuS-BpiPqGiZFIRLcL_mn2r40jiBkagQRjOmo485OyM';
 
