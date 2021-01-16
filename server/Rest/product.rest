@@ -2,19 +2,19 @@ GET http://localhost:8080/
 Content-Type: application/json
 whoIs: sh3riff101@gmail.com
 ###
-GET http://localhost:8080/products/getAll
+GET https://jumga-backend.herokuapp.com/products/getAll
 Content-Type: application/json
 whoIs: sh3riff101@gmail.com
 ###
 POST http://localhost:8080/products/add
 Content-Type: application/json
-whois: "sh3riff101@gmail.com"
+whois: pure@test.com
 
 {
-    "id" : "002",
-    "name": "MacBook let",
-    "photo": "https://s3card.s3.amazonaws.com/ast/FLW/macbookPro.jpg",
-    "price": 3900,
+    "id" : "005",
+    "name": "Chev Shirt",
+    "photo": "https://s3card.s3.amazonaws.com/ast/FLW/chev-shirt.jpg",
+    "price": 1200,
     "qty": 15
 }
 ###

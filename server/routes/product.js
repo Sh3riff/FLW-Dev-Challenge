@@ -54,7 +54,7 @@ router.get('/getAll', async (req, res) => {
         const allProducts = await Product.find( {} ).lean().exec();
         res.json(allProducts)
     } catch (error) {
-        res.status(500)     
+        res.status(500)   
     }
 })
 

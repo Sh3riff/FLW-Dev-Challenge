@@ -24,6 +24,7 @@ const User = mongoose.model('User', UserSchema)
 
 const userAuth = async (req, res, next) => {
     const whois = req.headers.whois
+    if(!whois) return next()
     const thisUser =  await User.findOne({email: whois}).lean().exec();
     if(!thisUser){
         const newUser = new User({ email:whois, isMerchant: false, })

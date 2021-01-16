@@ -11,19 +11,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(userAuth)
-// app.use(function (req, res, next) {
-//     res.locals.user = {
-//         email: req.headers.whois,
-//         isMerchant: true,
-//         storeId: "E45R"
-//     };
-//     next();
-// })
 
 app.get('/', function (req, res) {
     console.log(res.locals.user)
-    // res.json(req.headers.whois)
-    // res.json('hi');
 });
 
 app.use('/products', products);
