@@ -39,6 +39,7 @@ export const InfoCardSlim = styled.div`
     position: relative;
     background: rgba( 255, 255, 255, 0.2 );
     border: solid 1px rgba(255,255,255,0.3);
+    border-radius: 10px;
     background-clip: padding-box;
     backdrop-filter: blur(10px );
     border: 2.5px solid ${props => props.theme.color.secondary};

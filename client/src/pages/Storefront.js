@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery } from 'react-query';
 import { ApiGet } from '../utils'
-import { ProductCard, Loading, Error } from '../components';
+import { ChooseCountry, ProductCard, Loading, Error } from '../components';
 import { PageTemplate, FlexyBox } from '../styles/components';
 
 const Storefront = () => {
@@ -18,7 +18,7 @@ const Storefront = () => {
                         <ProductCard key={product.id} product={product}/>
                     ))
                 }
-           </FlexyBox>
+            </FlexyBox>
         </PageTemplate>
     )
 }
