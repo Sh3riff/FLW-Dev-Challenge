@@ -33,7 +33,7 @@ const UpdateProfile = ({ passThisProps }) => {
                     </label>
                     <label>Phone:
                         <input type="phone" name="phone" placeholder="Phone Number" defaultValue={data[0].phone} ref={register({ required: true })} />
-                        {errors.email && <ErrMsg>This field is required</ErrMsg>}
+                        {errors.phone && <ErrMsg>This field is required</ErrMsg>}
                     </label>                        
                     <label>Address:
                         <textarea name="address" placeholder="Enter Full Address" defaultValue={data[0].address} ref={register({ required: true })}></textarea>

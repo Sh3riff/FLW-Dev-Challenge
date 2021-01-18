@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useQuery } from 'react-query';
 import { ApiGet, useLocalStorage  } from '../utils'
@@ -9,6 +10,7 @@ import { PageTemplate, InfoCard, Button } from '../styles/components';
 import { storeDetail} from '../dummy'
 
 const MerchantsStore = () => {
+    let history = useHistory();
     const { user } = useAuth0()
     const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);    
     const { isLoading, error, data } = useQuery('userProfile', () =>ApiGet("users/getprofile", user, usersCountry))
@@ -29,7 +31,7 @@ const MerchantsStore = () => {
                 <>
                     <InfoCard>
                         <h2>You do not have a store, create one for $20</h2>
-                        <button> Create Store</button>
+                        <Button onClick={ () => history.push('/createStore')}> Create Store</Button>
                     </InfoCard>
                 </>
             :

@@ -67,6 +67,7 @@ export const Button =styled.button`
     background-color: ${props => props.theme.color.secondary};
     color: ${props => props.theme.color.light};
     margin: ${props => props.margin || "5px"};
+    height: 40px;
 `;
 export const FormContainer = styled.form`
     position: relative;
