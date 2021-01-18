@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:8080"
+const baseUrl = "https://jumga-backend.herokuapp.com"
 export const ApiGet = async (url, user ,country) => {
     const whois = user ? user.email : ""
     let parseHeader = whois ? { whois, country } : { country }
@@ -31,5 +31,4 @@ export const ApiPlus = ( method, url, body, user, country) => {
             reject(error)
         })
     })
-
 }
