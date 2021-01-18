@@ -71,6 +71,7 @@ export const Button =styled.button`
 export const FormContainer = styled.form`
     position: relative;
     width: 100%;
+    height: fit-content;
     max-width: 500px;
     padding: 10px 20px;
     margin: 10px auto;

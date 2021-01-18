@@ -1,34 +1,31 @@
 import React, {useState} from 'react';
-import { Table, AddProduct } from '../components';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useQuery } from 'react-query';
+import { ApiGet, useLocalStorage  } from '../utils'
+import { Loading, Error, Table, AddProduct, MerchantProducts } from '../components';
 import { PageTemplate, InfoCard, Button } from '../styles/components';
 
 //
-import { storeDetail, ProductTemplate, ProductDetail } from '../dummy'
-const userAsStore = true;
-
+import { storeDetail} from '../dummy'
 
 const MerchantsStore = () => {
-    const [ productView, SetProductView ] = useState(false)
-    const [ addProduct, SetAddProduct ] = useState(false)
+    const { user } = useAuth0()
+    const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);    
+    const { isLoading, error, data } = useQuery('userProfile', () =>ApiGet("users/getprofile", user, usersCountry))
+    // const [ productView, SetProductView ] = useState(false)
 
-    const editFunc = val => console.log(val)
-    const delFunc = val => console.log(val)
+    // const configT = {
+    //     uniqueId: "Product Id", 
+    //     isImage: ["Image"],
+    // }
 
-    const configT = {
-        uniqueId: "Product Id", 
-        isImage: ["Image"],
-    }
 
-    const configET = {
-        uniqueId: "Product Id", 
-        isImage: ["Image"],
-        editWith: editFunc,
-        delWith: delFunc,
-    }
+    if(isLoading) return( <Loading />)
+    if(error) return( <Error />)
 
     return (
-        <PageTemplate flexJus="flex-start">
-            {!userAsStore ?
+        <PageTemplate>
+            {!data[0].isMerchant ?
                 <>
                     <InfoCard>
                         <h2>You do not have a store, create one for $20</h2>
@@ -38,14 +35,15 @@ const MerchantsStore = () => {
             :
                 <div>
                     <InfoCard>
-                        <p>Store Name: {storeDetail.storeName}</p>
-                        <p>Store Id: {storeDetail.storeId}</p>
-                        <p>Balance: {storeDetail.balance}</p>
-                        <p>Dispatch Rider: {storeDetail.dispatchRider.name}</p>
-                        <p>Dispatch Rider Contact: {storeDetail.dispatchRider.contact}</p>
-                        <button onClick={ () => SetProductView(!productView) }>{!productView ? "VIEW PRODUCTS" : "VIEW SALES"}</button>
+                        <p>Store Name: {data[0].storeName}</p>
+                        <p>Store Id: {data[0].storeId}</p>
+                        <p>Balance: {data[0].storeBalance}</p>
+                        <p>Dispatch Rider: {data[0].dispatchRider}</p>
+                        <p>Dispatch Rider Contact: {data[0].dispatchRiderContact}</p>
+                        {/* <button onClick={ () => SetProductView(!productView) }>{!productView ? "VIEW PRODUCTS" : "VIEW SALES"}</button> */}
                     </InfoCard>
-                    <div>
+                    <MerchantProducts user={user} usersCountry={usersCountry}/>
+                    {/* <div>
                         {!productView ?
                             <>
                                 { 
@@ -56,23 +54,9 @@ const MerchantsStore = () => {
                                 }
                             </>
                         :
-                            <>
-                                <Button margin="10px 0" onClick={ () => SetAddProduct(!addProduct) }>{!addProduct ? "ADD PRODUCT" : "PRODUCTS"}</Button>
-                                {
-                                    !addProduct ?
-                                    <>
-                                    { 
-                                        (ProductDetail.Products.length === 0) ?
-                                        <InfoCard><h2>Your store is empty, add products now.</h2></InfoCard>
-                                        :
-                                        <Table  tableHeader={ProductDetail.Template} tableData={ProductDetail.Products} config={configET} /> 
-                                    }
-                                    </>
-                                    : <AddProduct/>
-                                }
-                            </>
+                            <MerchantProducts user={user} usersCountry={usersCountry}/>
                         }
-                    </div>
+                    </div> */}
                 </div>
             }
         </PageTemplate>

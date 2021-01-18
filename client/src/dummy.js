@@ -2,9 +2,25 @@
 
 // const baseurl = "http://localhost:8080"
 
+{/* <label>Country:
+    <select name="country" ref={register({ required: true })}>
+        <option value="">...</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Uk">Uk</option>
+        <option value="Kenya">Kenya</option>
+    </select>
+    {errors.country && <ErrMsg>This field is required</ErrMsg>}
+</label> */}
 
-export const url = 'https://i.picsum.photos/id/806/536/354.jpg?hmac=cuS-BpiPqGiZFIRLcL_mn2r40jiBkagQRjOmo485OyM';
+// const { isLoading:storeIsLoading, error:storeError, data:storeData } = useQuery('userProfile', () =>ApiGet("users/getprofile", user, usersCountry))
+// const { isLoading:productIsLoading, error:productError, data:productData } = useQuery('userProduct', () =>ApiGet("products/getAll", user, usersCountry))
+// const isLoading = storeIsLoading && productIsLoading
+// if(isLoading) return( <Loading />)
+// const error = storeError && productError
+// if(error) return( <Error />)
 
+let url;
 export const tableHeader = ["Image", "Product Name", "Product Id", "Price", "Date"];
 
 export const storeDetail = {

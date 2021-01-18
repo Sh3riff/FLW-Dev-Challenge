@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { useLocalStorage } from './'
 
 const baseUrl = "http://localhost:8080"
-export const ApiGet = async (url, id=0) => {
-    const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);
-     const whois = id || null
+export const ApiGet = async (url, user ,country) => {
+    const whois = user ? user.email : ""
+    let parseHeader = whois ? { whois, country } : { country }
     return new Promise((resolve, reject) => {
         axios.get(`${baseUrl}/${url}`, {
-            headers: {whois, usersCountry}
+            headers: parseHeader
         })
             .then(response => {
                 resolve(response.data)
@@ -18,9 +17,19 @@ export const ApiGet = async (url, id=0) => {
     })
 };
 
-export const ApiPlus = (url, method, whois, body) => {
-    
-
-    axios[method](`${baseUrl}/${url}`)
+export const ApiPlus = ( method, url, body, user, country) => {
+    const whois = user ? user.email : ""
+    let parseHeader = whois ? { whois, country } : { country }  
+    return new Promise((resolve, reject) => {
+        axios[method](`${baseUrl}/${url}`, body,  {
+            headers: parseHeader
+        })
+        .then(response => {
+            resolve(response)
+        })
+        .catch(error => {
+            reject(error)
+        })
+    })
 
 }
