@@ -99,19 +99,17 @@ router.put('/update', async (req, res) => {
     }
 })
 router.put('/merchantuser', async (req, res) => {
+    console.log("merchant here")
     const thisUser = res.locals.user.email;
     const nowMerchant = req.body;
     const { firstName, lastName, storeName, phone, address } = nowMerchant;
     const dispatchRiders = [ "Charolette Kimmell", "Bob Maultsby", "Nelly Saffold", "Tennie Willcutt", "Sharyn Font", "Jarod Balsley", "Nisha Lane", "Maxwell Marrinan", "Lorriane Enlow", "Jenni Patti" ]
-    // return
-    // const allMerchants = await User.find( {isMerchant: true} ).lean().exec();
-    // console.log(allMerchants.length)
-    // return
-
+    const allMerchants = await User.find( {isMerchant: true} ).lean().exec();
+    const acctNum = "0" + ( 690000033 + allMerchants.length )
     try {
         const payload = {
             account_bank: "044",
-            account_number: "0690000032",
+            account_number: acctNum,
             business_name: storeName,
             country: res.locals.user.country,
             split_type: "flat",
