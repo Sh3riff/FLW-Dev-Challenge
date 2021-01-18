@@ -10,6 +10,20 @@ whois: sh3riff101@gmail.com
     "email" : "pure@test.com"
 }
 ###
+PUT http://localhost:8080/users/merchantuser
+Content-Type: application/json
+whois: sh3riff101@gmail.com
+country: NG
+
+{
+    "firstName": "Sheriff",
+    "lastName": "Olowolagba",
+    "address": "Abuja",
+    "storeName": "Evergreen Store",
+    "phone": "07068481276"
+}
+
+###
 PUT http://localhost:8080/users/update
 Content-Type: application/json
 whois: sh3riff101@gmail.com
@@ -20,7 +34,7 @@ country: NG
     # "lastName": "Man",
     # "country": "Nigeria",
     # "address": "Abuja",
-    "isMerchant": true,
+    "isMerchant": false,
     # "email": "pure@test.com",
     "storeId": "NG-ABC45",
     "storeName": "Evergreen Store",

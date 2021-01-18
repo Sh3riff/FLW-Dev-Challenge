@@ -1,7 +1,12 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const Double = require('@mongoosejs/double');
+const Flutterwave = require('flutterwave-node-v3');
+const { codeGen } = require('../utils')
+require('dotenv').config()
 
+
+const flw = new Flutterwave(process.env.FLW_PUBLIC_KEY, process.env.FLW_SECRET_KEY);
 const UserSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
@@ -11,6 +16,9 @@ const UserSchema = new mongoose.Schema({
     isMerchant: Boolean,
     storeId: String,
     storeName: String,
+    accountNumber: String,
+    bankName: String,
+    subAccountId: String,
     storeBalance: Double,
     dispatchRider: String,
     dispatchRiderContact: String,
@@ -88,6 +96,50 @@ router.put('/update', async (req, res) => {
         res.json(result)
     } catch (error) {
         res.status(500)
+    }
+})
+router.put('/merchantuser', async (req, res) => {
+    const thisUser = res.locals.user.email;
+    const nowMerchant = req.body;
+    const { firstName, lastName, storeName, phone, address } = nowMerchant;
+    const dispatchRiders = [ "Charolette Kimmell", "Bob Maultsby", "Nelly Saffold", "Tennie Willcutt", "Sharyn Font", "Jarod Balsley", "Nisha Lane", "Maxwell Marrinan", "Lorriane Enlow", "Jenni Patti" ]
+    // return
+    // const allMerchants = await User.find( {isMerchant: true} ).lean().exec();
+    // console.log(allMerchants.length)
+    // return
+
+    try {
+        const payload = {
+            account_bank: "044",
+            account_number: "0690000032",
+            business_name: storeName,
+            country: res.locals.user.country,
+            split_type: "flat",
+            split_value: 1,
+            business_mobile: phone,
+            business_email: thisUser,
+            business_contact: `${firstName} ${lastName}`,
+            business_contact_mobile: phone,
+            meta: [
+                {
+                    meta_name: "mem_adr",
+                    meta_value: "0x16241F327213"
+                }
+            ]
+        }
+        const response = await flw.Subaccount.create(payload)
+        const updatedUser = { 
+            ...nowMerchant,
+            storeId: codeGen(4),
+            isMerchant: true,
+            dispatchRider: dispatchRiders[Math.floor(Math.random() * 10)],
+            dispatchRiderContact: "012-124-78",
+            subAccountId:response.data.subaccount_id
+        }
+        const result = await User.findOneAndUpdate({ email: thisUser }, updatedUser, { new: true } );   
+        res.json("success")
+    } catch (error) {
+        console.log(error)        
     }
 })
 
