@@ -59,10 +59,9 @@ router.get('/getAll', async (req, res) => {
 })
 
 router.delete('/delete', async (req, res) => {
-    const thisUser = res.locals.user.email;
     try {
         const result = await Product.findOneAndDelete({ id: req.body.id });
-        res.json(result)
+        res.json("product deleted")
     } catch (error) {
         res.status(500)
     }

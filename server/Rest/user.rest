@@ -1,6 +1,6 @@
 GET http://localhost:8080/users/getAll
 Content-Type: application/json
-whoIs: sh3riff101@gmail.com
+# whoIs: sh3riff101@gmail.com
 ###
 POST http://localhost:8080/users/add
 Content-Type: application/json
@@ -12,17 +12,19 @@ whois: sh3riff101@gmail.com
 ###
 PUT http://localhost:8080/users/update
 Content-Type: application/json
-whois: pure@test.com
+whois: sh3riff101@gmail.com
+country: NG
 
 {
-    "firstName": "Pure",
-    "lastName": "Man",
-    "country": "Nigeria",
-    "address": "Abuja",
+    "firstName": "Sheriff",
+    # "lastName": "Man",
+    # "country": "Nigeria",
+    # "address": "Abuja",
     "isMerchant": true,
-    "email": "pure@test.com",
-    "storeId": "rt945",
+    # "email": "pure@test.com",
+    "storeId": "NG-ABC45",
     "storeName": "Evergreen Store",
+    "storeBalance": 400.00,
     "dispatchRider": "Mr X",
     "dispatchRiderContact": "08145686467"
 }

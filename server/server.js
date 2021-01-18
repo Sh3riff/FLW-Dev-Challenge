@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(userAuth)
 
 app.get('/', function (req, res) {
-    console.log(res.locals.user)
+    res.json("Server loading...")
 });
 
 app.use('/products', products);
