@@ -2,6 +2,16 @@ GET http://localhost:8080/
 Content-Type: application/json
 whoIs: sh3riff101@gmail.com
 ###
+GET http://localhost:8080/products/getCountryProduct
+Content-Type: application/json
+whoIs: sh3riff101@gmail.com
+country: NG
+###
+GET http://localhost:8080/products/storeproduct
+Content-Type: application/json
+whoIs: sh3riff101@gmail.com
+country: NG
+###
 GET http://localhost:8080/products/getAll
 Content-Type: application/json
 # whoIs: sh3riff101@gmail.com
@@ -18,10 +28,20 @@ whois: pure@test.com
     "qty": 15
 }
 ###
+PUT http://localhost:8080/products/update
+Content-Type: application/json
+whois: pure@test.com
+
+{
+    "id" : "E45R-002",
+    # "price": 1200,
+    "country": "KE"
+}
+###
 DELETE http://localhost:8080/products/delete
 Content-Type: application/json
 whois: "sh3riff101@gmail.com"
 
 {
-    "id" : "rt945-005"
+    "id" : "FZ2N-rt4"
 }

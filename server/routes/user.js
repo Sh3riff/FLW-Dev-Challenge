@@ -36,26 +36,30 @@ const User = mongoose.model('User', UserSchema)
 const userAuth = async (req, res, next) => {
     const whois = req.headers.whois
     const country = req.headers.country
-    if(!whois) return next()
-    const thisUser =  await User.findOne({email: whois}).lean().exec();
-    if(!thisUser){
-        const newUser = new User({ email:whois, isMerchant: false, country})
-        newUser.save((err, result) => {
-            if(err) res.status(500).json("server error");
-        })
-        res.locals.user = {
-            email: whois,
-            country,
-            isMerchant: false
-        }
+    if(!whois){
+        res.locals.user = { country, isMerchant: false }
     }else{
-        res.locals.user = {
-            email: thisUser.email,
-            country,
-            isMerchant: thisUser.isMerchant,
-            storeId: thisUser.storeId
-        }
-    };
+
+        const thisUser =  await User.findOne({email: whois}).lean().exec();
+        if(!thisUser){
+            const newUser = new User({ email:whois, isMerchant: false, country})
+            newUser.save((err, result) => {
+                if(err) res.status(500).json("server error");
+            })
+            res.locals.user = {
+                email: whois,
+                country,
+                isMerchant: false
+            }
+        }else{
+            res.locals.user = {
+                email: thisUser.email,
+                country,
+                isMerchant: thisUser.isMerchant,
+                storeId: thisUser.storeId 
+            }
+        };
+    }
     next();
 }
 
