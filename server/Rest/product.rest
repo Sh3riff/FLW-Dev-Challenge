@@ -19,13 +19,16 @@ Content-Type: application/json
 POST http://localhost:8080/products/add
 Content-Type: application/json
 whois: pure@test.com
+country: NG
+storeId: test
 
 {
     "id" : "005",
     "name": "Chev Shirt",
     "photo": "https://s3card.s3.amazonaws.com/ast/FLW/chev-shirt.jpg",
     "price": 1200,
-    "qty": 15
+    "qty": 15,
+    "storeSubAcct": "Test-Store-SUB-ACCT"
 }
 ###
 PUT http://localhost:8080/products/update

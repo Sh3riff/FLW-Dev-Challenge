@@ -1,4 +1,4 @@
-GET http://localhost:8080/users/getAll
+GET https://jumga-backend.herokuapp.com/users/getAll
 Content-Type: application/json
 # whoIs: sh3riff101@gmail.com
 ###

@@ -1,0 +1,32 @@
+GET http://localhost:8080/transactions/getstore
+Content-Type: application/json
+whois: sh3riff101@gmail.com
+storeId: storeId1
+###
+GET http://localhost:8080/transactions/getAll
+Content-Type: application/json
+whois: sh3riff101@gmail.com
+storeId: storeId1
+###
+POST http://localhost:8080/transactions/add
+Content-Type: application/json
+whois: sh3riff101@gmail.com
+
+{
+    "transactions": [
+        {
+            "storeId": "storeId-A",
+            "product": "product-A"
+        },
+        {
+            "storeId": "storeId-B",
+            "product": "product-B"
+        },
+        {
+            "storeId": "storeId-C",
+            "product": "product-C"
+        }
+    ]
+}
+###
+DELETE http://localhost:8080/transactions/del

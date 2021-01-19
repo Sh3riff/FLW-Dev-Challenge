@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const products = require('./routes/product');
+const transactions = require('./routes/transaction');
 const {users, userAuth} = require('./routes/user');
 require('dotenv').config()
 
@@ -18,6 +19,7 @@ app.get('/', function (req, res) {
 
 app.use('/products', products);
 app.use('/users', users);
+app.use('/transactions', transactions);
 
 
 mongoose.connect(process.env.DB_URL, { useNewUrlParser: true,
