@@ -78,4 +78,13 @@ router.delete('/delete', async (req, res) => {
     }
 } )
 
+router.delete('/deleteAll', async (req, res) => {
+    try {
+        const result = await Product.deleteMany({});
+        res.json("All products deleted")
+    } catch (error) {
+        res.status(500)
+    }
+} )
+
 module.exports = router;
