@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import NavProfile from './NavProfile';
 import NavCart from './NavCart';
-import { useLocalStorage } from '../../utils'
+import { useLocalStorage } from '../../utils';
 import { NavMain, NavLeft, NavRight, HomeLink } from "./NavStyles";
 
 const NavBar = () => {

@@ -32,6 +32,8 @@ const Table = ({ tableHeader, tableData, config }) => {
                                         tableHeader.map(item =>
                                             (isImage.includes(item)) ?
                                             <td><img src={data[item]}  /></td> :
+                                            (item === "date") ?
+                                            <td>{data[item].slice(0,10)}</td> :
                                             <td>{data[item]}</td>
                                         )
                                     }

@@ -12,6 +12,16 @@ export default createGlobalStyle`
     }    
 `;
 
+export const SimplePack = styled.span`
+    display: flex;
+    flex-direction: column;
+    h1{
+        text-align: center;
+        color: ${props=>props.theme.color.secondary};
+        padding: 15px 0;
+        font-weight: bold;
+    }
+`
 export const ErrMsg = styled.span`
     color: red;
 `

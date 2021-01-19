@@ -1,15 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
+import { useLocalStorage, setCurrency } from '../../utils';
 import { CartContext } from '../../contexts';
 import { Card } from './ProductCardStyle'
 
 const ProductCard = ({ product }) => {
-
+    const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);
     const { addProduct, cartItems, increase } = useContext(CartContext);
     const { name, id, photo, price } = product;
 
     const isInCart = id => {
-        return !!cartItems.find(item => item.id === id);
+        return !!cartItems.find(item => item.id === id); 
     }
+
+    let currency = setCurrency(usersCountry);
 
     return (
         <Card>
@@ -17,7 +20,7 @@ const ProductCard = ({ product }) => {
             <div>
                 <div className="basic-info">
                     <p>{name}</p>
-                    <p>${price}</p>
+                    <p>{currency}{price}</p>
                 </div>
                 {
                     isInCart(id) ?

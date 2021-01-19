@@ -1,9 +1,8 @@
 import React from 'react'
 import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 import { useMutation, useQueryClient  } from 'react-query';
-import { FLW_Init } from '../Flutterwave';
 import { InfoCard, Button } from "../../styles/components"
-import { ApiPlus } from '../../utils';
+import { ApiPlus, FLW_Init } from '../../utils';
 
 const CreateStorePayment = ( { passProps } ) => {
     const {user, usersCountry, info} = passProps
@@ -14,7 +13,6 @@ const CreateStorePayment = ( { passProps } ) => {
     tx_ref:`CreateStore-${user.email}`,
     amount: 20,
     currency: "USD",
-    payment_options: 'card,mobilemoney,ussd',
     customer:{
         email: user.email,
         phonenumber: info.phone,

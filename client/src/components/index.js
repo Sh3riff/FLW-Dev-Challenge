@@ -7,6 +7,7 @@ export { default as UpdateProfile } from './UpdateProfile';
 export { default as AddProduct } from './AddProduct';
 export { default as MerchantProducts } from './MerchantProducts';
 export { default as CreateStorePayment } from './CreateStorePayment';
+export { default as CheckoutPay } from './CheckoutPay';
 export { default as Flutterwave } from './Flutterwave';
 export { default as Loading } from './utils/Loading';
 export { default as Error } from './utils/Error';

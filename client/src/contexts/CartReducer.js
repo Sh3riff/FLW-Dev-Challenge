@@ -6,7 +6,7 @@ const Storage = (cartItems) => {
 export const sumItems = cartItems => {
     Storage(cartItems);
     let itemCount = cartItems.reduce((total, product) => total + product.quantity, 0);
-    let DeliveryFee = 200
+    let DeliveryFee = 150
     let total = cartItems.reduce((total, product) => total + (product.price + DeliveryFee) * product.quantity, 0);
     return { itemCount, total }
 }

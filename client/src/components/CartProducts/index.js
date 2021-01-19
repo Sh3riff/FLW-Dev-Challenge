@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
+import { useLocalStorage, setCurrency } from '../../utils';
 import { MdDelete, MdAddCircle, MdRemoveCircle } from "react-icons/md";
 import { CartContext } from '../../contexts';
 import { CartProductCard, CartInfoCard } from './CartStyles'
-import { formatNumber } from '..';
 import deliveryImage from './delivery.jpg'
 
-const CartItem = ({product}) => {
-
+const CartItem = ({product, currency}) => {
     const { increase, decrease, removeProduct } = useContext(CartContext);
 
     return (
@@ -14,7 +13,7 @@ const CartItem = ({product}) => {
         <CartProductCard>
             <img alt={product.name} src={product.photo} />
             <h5>{product.name}</h5>
-            <p>Price: {formatNumber(product.price)} (x {product.quantity}) </p>
+            <p>Price: {currency}{product.price} (x {product.quantity}) </p>
             <button onClick={() => increase(product)}> <MdAddCircle /> </button>
 
             {
@@ -31,17 +30,19 @@ const CartItem = ({product}) => {
 }
 
 const CartProducts = () => {
+    const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);
     const { cartItems, itemCount } = useContext(CartContext);
-    const deliveryFee = 200;
+    const deliveryFee = 150;
+    let currency = setCurrency(usersCountry)
     return (
         <CartInfoCard>
             {
-                cartItems.map(product =>  <CartItem key={product.id} product={product}/>)
+                cartItems.map(product =>  <CartItem key={product.id} product={product} currency={currency}/>)
             }
             <CartProductCard>
                 <img src={ deliveryImage }/>
                 <h5>Delivery Fee</h5>          
-                <p>Price: {formatNumber( deliveryFee * itemCount)} (x {itemCount}) </p>            
+                <p>Price: {currency}{( deliveryFee * itemCount)} (x {itemCount}) </p>            
             </CartProductCard>
         </CartInfoCard>
     )

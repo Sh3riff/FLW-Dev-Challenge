@@ -1,2 +1,5 @@
 export { ApiGet, ApiPlus } from './Fetcher'
 export { default as useLocalStorage } from './useLocalStorage'
+export { setCurrency, payCurrency } from './currency'
+export { FLW_Init } from './flwInit'
+export { default as cartSorter } from './cartSorter'
