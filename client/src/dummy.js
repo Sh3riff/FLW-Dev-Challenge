@@ -2,6 +2,41 @@
 
 // const baseurl = "http://localhost:8080"
 
+const gr = [
+    {
+        id: "dave",
+        unit: 5
+    },
+    {
+        id: "rose",
+        unit: 5
+    },
+    {
+        id: "dave",
+        unit: 6
+    },
+    {
+        id: "may",
+        unit: 7
+    },
+]
+
+let gr2 = gr.map(item => ({[item.id]: item.unit}))
+
+
+const basket = gr2.reduce((basket, key) => {
+    for (const [keyName, keyCount] of Object.entries(key)) {
+        if (!basket[keyName]) {
+            basket[keyName] = 0;
+        }
+
+        basket[keyName] += keyCount;
+    }
+
+    return basket;
+}, {});
+
+
 {/* <label>Country:
     <select name="country" ref={register({ required: true })}>
         <option value="">...</option>

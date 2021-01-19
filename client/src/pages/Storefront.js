@@ -8,7 +8,7 @@ import { PageTemplate, FlexyBox } from '../styles/components';
 const Storefront = () => {
     const { user } = useAuth0()
     const [usersCountry, setUsersCountry] = useLocalStorage('usersCountry', null);
-    const { isLoading, error, data } = useQuery('storeFront', () =>ApiGet("products/getAll", user, usersCountry))
+    const { isLoading, error, data } = useQuery('storeFront', () =>ApiGet("products/getCountryProduct", user, usersCountry))
     if(isLoading) return( <Loading />)
     if(error) return( <Error />)
     return (

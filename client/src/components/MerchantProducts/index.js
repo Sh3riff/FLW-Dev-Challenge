@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
-import { useQuery,  useMutation, useQueryClient } from 'react-query';
-import { ApiGet, ApiPlus, ApiProductDelete } from '../../utils'
+import { useQuery } from 'react-query';
+import { ApiGet } from '../../utils'
 import { Loading, Error, Table, AddProduct } from '../';
 import { InfoCard, Button } from '../../styles/components';
 
 
 const MerchantProducts = ({ user, usersCountry}) => {
     const [ addProduct, SetAddProduct ] = useState(false)
-    const queryClient = useQueryClient(); 
-    const { isLoading, error, data} = useQuery('userProduct', () =>ApiGet("products/getAll", user, usersCountry))
+    const { isLoading, error, data} = useQuery('storeProduct', () =>ApiGet("products/storeproduct", user, usersCountry))
     
-//
+    const toggleAddProduct = () => SetAddProduct(!addProduct)
     const editFunc = val => console.log(val.id)
     const delFunc = val =>{
         console.log(val.id)
@@ -24,7 +23,7 @@ const MerchantProducts = ({ user, usersCountry}) => {
 
     return (
             <>
-                <Button margin="10px 0" onClick={ () => SetAddProduct(!addProduct) }>{!addProduct ? "ADD PRODUCT" : "PRODUCTS"}</Button>
+                <Button margin="10px 0" onClick={ () => toggleAddProduct() }>{!addProduct ? "ADD PRODUCT" : "PRODUCTS"}</Button>
                 {
                     !addProduct ?
                     <>
@@ -35,7 +34,7 @@ const MerchantProducts = ({ user, usersCountry}) => {
                         <Table  tableHeader={productTableHeader} tableData={data} config={configET} /> 
                     }
                     </>
-                    : <AddProduct/>
+                    : <AddProduct  user={user} usersCountry={usersCountry} toggler={toggleAddProduct}/>
                 }
             </>
     )

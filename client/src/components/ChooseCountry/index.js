@@ -1,6 +1,6 @@
 import React from "react";
 import style from "styled-components";
-import { PageTemplate, InfoCardSlim } from '../../styles/components'
+import { PageTemplate, InfoCardSlim } from '../../styles/components';
 
 
 const FlagBox = style(InfoCardSlim)`
@@ -32,7 +32,7 @@ const FlagBox = style(InfoCardSlim)`
   }
 `;
 
-const ChooseCountry = ({ setCountry }) => {
+const ChooseCountry = ( {setCountry} ) => {
 
   return(
       <PageTemplate>
